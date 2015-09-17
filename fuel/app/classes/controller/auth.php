@@ -27,7 +27,7 @@ class Controller_Auth extends Controller_Template
 			else{
 				$data['username']    = Input::post('username');
 				$data['error'] = 'Wrong username/password combo. Try again';
-				\Messages::error(__('login.registation-not-enabled') . "Wrong username/password combo. Try again");
+				\Messages::error(__('login.registation-not-enabled') . "Wrong username or password");
 			}
 		}
 		

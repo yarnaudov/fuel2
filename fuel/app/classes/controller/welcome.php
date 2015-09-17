@@ -19,29 +19,42 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Welcome extends Controller
+class Controller_Welcome extends Controller_Template
 {
-	/**
-	 * The basic welcome message
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
+	
+	/*
+	public function before(){
+		
+		if ( ! Auth::check() and ! Auth::guest_login()){
+			Response::redirect('/login');
+		}
+		
+	}
+	*/
+	
 	public function action_index()
 	{
 		return Response::forge(View::forge('welcome/index'));
 	}
 
-	/**
-	 * A typical "Hello, Bob!" type example.  This uses a Presenter to
-	 * show how to use them.
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
 	public function action_hello()
 	{
+		
+		if (!Auth::check()){
+			Response::redirect('/login');
+		}
+		
+		Lang::load('messages', 'messages');
+
 		return Response::forge(Presenter::forge('welcome/hello'));
+	}
+	
+	public function action_dashboard()
+	{
+		
+		$this->template->title = 'Dashboard';
+		$this->template->content = '';//\View::forge('users/index');
+		
 	}
 
 	/**

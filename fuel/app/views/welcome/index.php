@@ -33,6 +33,15 @@
 	<header>
 		<div class="container">
 			<div id="logo"></div>
+			
+			<div>
+				<ul>
+					<?php foreach(Config::get('locales') as $lang => $local){ ?>
+					<li><a href="<?php echo Uri::create($lang . str_replace(Uri::base(), '/', Uri::current())); ?>" ><?php echo $lang; ?></a></li>
+					<?php } ?>
+				</ul>
+			</div>
+			
 		</div>
 	</header>
 	<div class="container">
@@ -63,6 +72,9 @@
 				</ul>
 			</div>
 		</div>
+		
+		<a href="<?php echo Uri::generate('welcome/hello'); ?>" >Go to hello page</a>
+		
 		<hr/>
 		<footer>
 			<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>

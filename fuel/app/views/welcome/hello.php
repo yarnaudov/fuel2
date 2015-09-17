@@ -33,12 +33,21 @@
 	<header>
 		<div class="container">
 			<div id="logo"></div>
+			
+			<div>
+				<ul>
+					<?php foreach(Config::get('locales') as $lang => $local){ ?>
+					<li><a href="<?php echo Uri::create($lang . str_replace(Uri::base(), '/', Uri::current())); ?>" ><?php echo $lang; ?></a></li>
+					<?php } ?>
+				</ul>
+			</div>
+			
 		</div>
 	</header>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Hello, <?php echo $name; ?>! <small>Congratulations, you just used a Presenter!</small></h1>
+				<h1><?php echo __('messages.hello'); ?>, <?php echo $name; ?>! <small>Congratulations, you just used a Presenter!</small></h1>
 				<hr>
 				<p>The controller generating this page is found at <code>APPPATH/classes/controller/welcome.php</code>.</p>
 				<p>This view is located at <code>APPPATH/views/welcome/hello.php</code>.</p>

@@ -48,41 +48,7 @@ class Controller_Auth extends Controller_Template
 
 	public function action_register()
 	{
-		// is registration enabled?
-		if ( ! \Config::get('application.user.registration', false))
-		{
-			// inform the user registration is not possible
-			\Messages::error(__('login.registation-not-enabled'));
-
-			// and go back to the previous page (or the homepage)
-			\Response::redirect_back();
-		}
-
-		// create the registration fieldset
-		$form = \Fieldset::forge('registerform');
-
-		// add a csrf token to prevent CSRF attacks
-		$form->form()->add_csrf();
-
-		// and populate the form with the model properties
-		$form->add_model('Model\\Auth_User');
-
-		// add the fullname field, it's a profile property, not a user property
-		$form->add_after('fullname', __('login.form.fullname'), array(), array(), 'username')->add_rule('required');
-
-		// add a password confirmation field
-		$form->add_after('confirm', __('login.form.confirm'), array('type' => 'password'), array(), 'password')->add_rule('required');
-
-		// make sure the password is required
-		$form->field('password')->add_rule('required');
-
-		// and new users are not allowed to select the group they're in (duh!)
-		$form->disable('group_id');
-
-		// since it's not on the form, make sure validation doesn't trip on its absence
-		$form->field('group_id')->delete_rule('required')->delete_rule('is_numeric');
-
-		// was the registration form posted?
+	
 		if (\Input::method() == 'POST')
 		{
 			// validate the input
@@ -149,7 +115,9 @@ class Controller_Auth extends Controller_Template
 		}
 
 		// pass the fieldset to the form, and display the new user registration view
-		return \View::forge('login/registration')->set('form', $form, false);
+		//return \View::forge('auth/register');
+		$this->template->title = 'Register';
+		$this->template->content = \View::forge('auth/register');
 	}
 
 	public function action_lostpassword() {

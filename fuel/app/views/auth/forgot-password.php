@@ -15,14 +15,22 @@
 				}
 				?>
 				
-				<?php echo Form::open(Uri::generate('lostpassword')); ?>
+				<?php echo Form::open(array('action' => Uri::generate('lostpassword'), 'class' => 'form-horizontal')); ?>
 				<?php echo Form::csrf(); ?>
 					<fieldset>
-						<div class="form-group">
-							<label class="control-label" >Email</label>
-							<?php echo Form::input('email', (isset($email) ? $email : null), array('class' => 'form-control')); ?>
+						<div class="row">
+							<label class="control-label col-sm-2" >Email</label>
+							<div class="col-sm-10" >
+								<?php echo Form::input('email', (isset($email) ? $email : null), array('class' => 'form-control')); ?>
+							</div>
 						</div>
-						<?php echo Form::button('submit', 'Submit', array('class' => 'btn btn-lg btn-success btn-block')); ?>
+						
+						<div class="row">
+							<hr>
+							<div class="col-sm-12 text-center" >
+								<?php echo Form::button('submit', 'Submit', array('class' => 'btn btn-success')); ?>
+							</div>
+						</div>
 					</fieldset>
 				<?php echo Form::close(); ?>
 				

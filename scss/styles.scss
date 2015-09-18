@@ -1,0 +1,12 @@
+
+@import '../fuel/vendor/components/font-awesome/scss/font-awesome.scss';
+@import '../fuel/vendor/twbs/bootstrap-4.0.0/scss/bootstrap.scss';
+
+header{
+    padding: 10px;
+    border-bottom: 1px solid $brand-primary;
+    h1{
+        font-size: $font-size-h3;
+        margin: 0;
+    }
+}

@@ -2,31 +2,25 @@
 
 class Controller_Auth extends Controller_Template
 {
-
-	public $template = 'template-login';
 	
-	public function action_login()
-	{
+	public function action_login() {
 		
 		if (\Auth::check()) {
 			
-			echo print_r(Auth::get_profile_fields()). "<----<br>";
-			echo Auth::has_access('blog.comments');
+			//echo print_r(Auth::get_profile_fields()). "<----<br>";
+			//echo Auth::has_access('blog.comments');
 			
-			//\Messages::info(__('login.already-logged-in'));
-			//\Response::redirect_back('hello');
+			\Response::redirect_back('hello');
 		}
 		
 		$data = array();
-		if (Input::post())
-		{
+		if (Input::post()){
 			
-			if (Auth::login()) {
+			if (Auth::login()){
 				\Response::redirect_back('dashboard');
 			}
 			else{
 				$data['username']    = Input::post('username');
-				$data['error'] = 'Wrong username/password combo. Try again';
 				\Messages::error(__('login.registation-not-enabled') . "Wrong username or password");
 			}
 		}
@@ -36,8 +30,8 @@ class Controller_Auth extends Controller_Template
 		
 	}
 
-	public function action_logout()
-	{
+	public function action_logout() {
+		
 		\Auth::dont_remember_me();
 		\Auth::logout();
 
@@ -46,8 +40,7 @@ class Controller_Auth extends Controller_Template
 		\Response::redirect_back();
 	}
 
-	public function action_register()
-	{
+	public function action_register() {
 	
 		if (\Input::method() == 'POST')
 		{

@@ -34,7 +34,10 @@ class Controller_Welcome extends Controller_Template
 	
 	public function action_index()
 	{
-		return Response::forge(View::forge('welcome/index'));
+		
+		$this->template->title = 'Welcome';
+		$this->template->content = \View::forge('welcome/index');
+		
 	}
 
 	public function action_hello()

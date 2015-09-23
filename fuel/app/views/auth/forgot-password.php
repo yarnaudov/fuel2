@@ -14,7 +14,7 @@
 	
 	<div class="col-md-4 col-md-offset-4">
 				
-		<?php echo Form::open(array('action' => Uri::generate('lostpassword'), 'class' => 'form-horizontal')); ?>
+		<?php echo Form::open(array('action' => Uri::create('lostpassword'), 'class' => 'form-horizontal')); ?>
 		<?php echo Form::csrf(); ?>
 		
 		<div class="row">

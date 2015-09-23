@@ -39,18 +39,6 @@ class Controller_Welcome extends Controller_Template
 		$this->template->content = \View::forge('welcome/index');
 		
 	}
-
-	public function action_hello()
-	{
-		
-		if (!Auth::check()){
-			Response::redirect('/login');
-		}
-		
-		Lang::load('messages', 'messages');
-
-		return Response::forge(Presenter::forge('welcome/hello'));
-	}
 	
 	public function action_dashboard()
 	{

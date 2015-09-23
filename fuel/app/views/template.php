@@ -17,10 +17,10 @@
 				<?php if(Auth::check()){ ?>
 				<i class="fa fa-user" ></i>
 				<span><?php echo Auth::get_screen_name(); ?></span>
-				<a href="<?php echo Uri::generate('logout'); ?>" ><i class="fa fa-sign-out"></i></a>	
+				<a href="<?php echo Uri::create('logout'); ?>" ><i class="fa fa-sign-out"></i></a>	
 				<?php }else{ ?>
-				<a class="btn btn-sm btn-primary" href="<?php echo Uri::generate('register') ?>" >Sign up</a>
-				<a class="btn btn-sm btn-primary-outline" href="<?php echo Uri::generate('login') ?>" >Sign in</a>
+				<a class="btn btn-sm btn-primary" href="<?php echo Uri::create('register') ?>" >Sign up</a>
+				<a class="btn btn-sm btn-primary-outline" href="<?php echo Uri::create('login') ?>" >Sign in</a>
 				<?php } ?>
 				</div>
 			</div>
@@ -33,10 +33,10 @@
 				<div class="collapse navbar-toggleable-xs" id="navbar">
 					<ul class="nav navbar-nav">
 						<li class="nav-item<?php echo preg_match('/dashboard/', Uri::current()) ? ' active': ''; ?>" >
-							<a class="nav-link" href="<?php echo Uri::generate('dashboard'); ?>" >Dashboard</a>
+							<a class="nav-link" href="<?php echo Uri::create('dashboard'); ?>" >Dashboard</a>
 						</li>
 						<li class="nav-item<?php echo preg_match('/users/', Uri::current()) ? ' active': ''; ?>" >
-							<a class="nav-link" href="<?php echo Uri::generate('users'); ?>" >Users</a>
+							<a class="nav-link" href="<?php echo Uri::create('users'); ?>" >Users</a>
 						</li>
 					</ul>
 				</div>

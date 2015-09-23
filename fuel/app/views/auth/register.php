@@ -14,7 +14,7 @@
 	
 	<div class="col-md-4 col-md-offset-4">
 				
-		<?php echo Form::open(array('action' => Uri::generate('register'), 'class' => 'form-horizontal')); ?>
+		<?php echo Form::open(array('action' => Uri::create('register'), 'class' => 'form-horizontal')); ?>
 		<?php echo Form::csrf(); ?>
 					
 		<div class="row">

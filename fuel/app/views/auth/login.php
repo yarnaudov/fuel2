@@ -14,7 +14,7 @@
 	
 	<div class="col-md-4 col-md-offset-4">
 				
-		<?php echo Form::open(array('action' => Uri::generate('login'), 'class' => 'form-horizontal')); ?>
+		<?php echo Form::open(array('action' => Uri::update_query_string(), 'class' => 'form-horizontal')); ?>
 		<?php echo Form::csrf(); ?>
 
 		<div class="row">
@@ -45,7 +45,7 @@
 		
 		<div class="row">
 			<div class="col-sm-12" >
-				<a href="<?php echo Uri::generate('lostpassword') ?>" >Forgot password?</a>
+				<a href="<?php echo Uri::create('lostpassword') ?>" >Forgot password?</a>
 			</div>
 		</div>
 		

@@ -15,7 +15,7 @@
 				}
 				?>
 				
-				<?php echo Form::open(Uri::generate('lostpassword')); ?>
+				<?php echo Form::open(Uri::create('lostpassword')); ?>
 				<?php echo Form::csrf(); ?>
 					<fieldset>
 						<div class="form-group">

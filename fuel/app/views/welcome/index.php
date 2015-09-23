@@ -1,6 +1,8 @@
 
 	<div class="container">
-	
+
+		<br>
+		
 		<div class="jumbotron">
 			<h1>Welcome!</h1>
 			<p>You have successfully installed the FuelPHP Framework.</p>
@@ -29,8 +31,5 @@
 			</div>
 		</div>
 		
-		<a href="<?php echo Uri::generate('welcome/hello'); ?>" >Go to hello page</a>
-		
-		<br><br>
 		
 	</div>

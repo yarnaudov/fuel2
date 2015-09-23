@@ -27,16 +27,13 @@ class Uri extends Fuel\Core\Uri
         }
     }
     
-    public static function generate($uri = null, $variables = array(), $get_variables = array(), $secure = null)
+    public static function create($uri = null, $variables = array(), $get_variables = array(), $secure = null)
 	{
-		$language = Config::get('language');
-	 
-		if ( !empty($uri))
-		{
-			$language .= '/';
-		}
-	 
-		return \Uri::create($language.$uri, $variables, $get_variables, $secure);
+		is_null($uri) and $uri = static::string();
+		if(!preg_match("#^(http|https|ftp)://#i", $uri)){
+			$uri = Config::get('language') . '/' . $uri;
+		}	
+		return parent::create($uri, $variables, $get_variables, $secure);
 	}
     
 }

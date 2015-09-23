@@ -3,24 +3,32 @@
 class Controller_Auth extends Controller_Template
 {
 	
+	public function accessRules(){
+		return array(
+			array(
+				'actions' => array('login', 'register', 'lostpassword'), 
+				'users' => '*' // * - all, @ - logged in
+			)
+		);
+	}
+	
 	public function action_login() {
 		
-		if (\Auth::check()) {
-			
-			//echo print_r(Auth::get_profile_fields()). "<----<br>";
-			//echo Auth::has_access('blog.comments');
-			
-			\Response::redirect_back('hello');
+		$url = urldecode(Input::get('url'));
+		!$url and $url = Uri::create('');
+		
+		if(\Auth::check()){
+			\Response::redirect($url);
 		}
 		
 		$data = array();
 		if (Input::post()){
 			
 			if (Auth::login()){
-				\Response::redirect_back('dashboard');
+				\Response::redirect($url);
 			}
 			else{
-				$data['username']    = Input::post('username');
+				$data['username'] = Input::post('username');
 				\Messages::error(__('login.registation-not-enabled') . "Wrong username or password");
 			}
 		}
@@ -173,7 +181,7 @@ class Controller_Auth extends Controller_Template
 						$email->subject(__('login.password-recovery'));
 						$email->html_body(
 							\View::forge('emails/lostpassword', array(
-								'url' => \Uri::generate('lostpassword') . '?hash=' . base64_encode($hash),
+								'url' => \Uri::create('lostpassword') . '?hash=' . base64_encode($hash),
 								'user' => $user
 							))
 						);

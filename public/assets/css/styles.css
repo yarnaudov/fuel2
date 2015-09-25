@@ -6534,4 +6534,11 @@ header {
     font-size: 1.75rem;
     margin: 0; }
 
+.container-sidebar {
+  float: left;
+  width: 10rem; }
+
+.container-body {
+  margin-left: 10.5rem; }
+
 /*# sourceMappingURL=styles.css.map */
